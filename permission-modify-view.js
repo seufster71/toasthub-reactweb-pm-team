@@ -2,20 +2,20 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import FormBuilder from '../../coreView/common/form-builder';
 
-export default function PMTeamModifyView({containerState, item, inputFields, appPrefs, 
+export default function PMPermissionModifyView({containerState, item, inputFields, appPrefs, 
 	itemPrefForms, onSave, onCancel, inputChange}) {
     
-	let formName = "PM_TEAM_FORM";
-	let formTitle = "Team";
+	let formName = "PM_PERMISSION_FORM";
+	let formTitle = "Permission";
 	let formGroup = "FORM1";
     
     return (
-    	<FormBuilder containerState={containerState} item={item} formName={formName} formTitle={formTitle} formGroup={formGroup} inputFields={inputFields} appPrefs={appPrefs} prefForms={itemPrefForms} onSave={onSave} onCancel={onCancel} inputChange={inputChange}/>
+    	<FormBuilder containerState={containerState} item={item} formName={formName} formTitle={formTitle} formGroup={formGroup} inputFields={inputFields} appPrefs={appPrefs} prefForms={itemPrefForms} onSave={onSave} onCancel={onCancel} onChange={inputChange}/>
     );
 }
 
 
-PMTeamModifyView.propTypes = {
+PMPermissionModifyView.propTypes = {
   containerState: PropTypes.object,
   item: PropTypes.object,
   appPrefs: PropTypes.object,
