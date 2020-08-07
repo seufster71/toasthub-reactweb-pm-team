@@ -19,7 +19,7 @@ export default function PMTeamView({containerState, itemState, appPrefs, onListL
 	let header = "";
 	let parent = null;
 	if (itemState.parent != null) {
-		parent = itemState.parent.username;
+		parent = itemState.parent.name;
 	}
 	if (itemState.prefTexts.PM_TEAM_PAGE != null && itemState.prefTexts.PM_TEAM_PAGE.PM_TEAM_PAGE_HEADER != null) {
 		header = itemState.prefTexts.PM_TEAM_PAGE.PM_TEAM_PAGE_HEADER.value;

@@ -19,7 +19,7 @@ export default function PMPermissionView({containerState, itemState, appPrefs, o
 	let header = "";
 	let parent = null;
 	if (itemState.parent != null) {
-		parent = itemState.parent.username;
+		parent = itemState.parent.name;
 	}
 	if (itemState.prefTexts.PM_PERMISSION_PAGE != null && itemState.prefTexts.PM_PERMISSION_PAGE.PM_PERMISSION_PAGE_HEADER != null) {
 		header = itemState.prefTexts.PM_PERMISSION_PAGE.PM_PERMISSION_PAGE_HEADER.value;

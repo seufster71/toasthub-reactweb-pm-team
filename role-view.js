@@ -19,7 +19,7 @@ export default function PMRoleView({containerState, itemState, appPrefs, onListL
 	let header = "";
 	let parent = null;
 	if (itemState.parent != null) {
-		parent = itemState.parent.username;
+		parent = itemState.parent.name;
 	}
 	if (itemState.prefTexts.PM_ROLE_PAGE != null && itemState.prefTexts.PM_ROLE_PAGE.PM_ROLE_PAGE_HEADER != null) {
 		header = itemState.prefTexts.PM_ROLE_PAGE.PM_ROLE_PAGE_HEADER.value;
