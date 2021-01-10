@@ -6,7 +6,7 @@ import Modal from '../../coreView/common/modal';
 import Input from '../../coreView/common/text-input';
 import Select from '../../coreView/common/select-input';
 
-export default function PMPermissionView({containerState, itemState, appPrefs, onListLimitChange,
+export default function PMPermissionView({itemState, appPrefs, onListLimitChange,
 	onSearchChange, onSearchClick, onPaginationClick, onOrderBy, onOption, 
 	closeModal, inputChange, goBack, session}) {
 
@@ -30,8 +30,8 @@ export default function PMPermissionView({containerState, itemState, appPrefs, o
 	}
 	
 	let deleteModalHeader = "Delete ";
-	if (containerState.selected != null && containerState.selected.title != null) {
-		deleteModalHeader += containerState.selected.title.defaultText;
+	if (itemState.selected != null && itemState.selected.title != null) {
+		deleteModalHeader += itemState.selected.title.defaultText;
 	}
 	
 	let viewPortSmall = false;
@@ -41,12 +41,8 @@ export default function PMPermissionView({containerState, itemState, appPrefs, o
 		<div>
 			{viewPortSmall ? (
 				<ListBuilder
-		  	      	containerState={containerState}
+		  	      	itemState={itemState}
 		  	      	header={header}
-		  	      	items={itemState.items}
-		  	      	itemCount={itemState.itemCount}
-		  	      	listStart={itemState.listStart}
-		  	      	listLimit={itemState.listLimit}
 		  	     	columns={columns}
 		  	      	appPrefs={appPrefs}
 		  	      	onListLimitChange={onListLimitChange}
@@ -56,18 +52,12 @@ export default function PMPermissionView({containerState, itemState, appPrefs, o
 		  			onOrderBy={onOrderBy}
 	  				onOption={onOption}
 	  				goBack={goBack}
-		  			orderCriteria={itemState.orderCriteria}
-	  				searchCriteria={itemState.searchCriteria}
 		  	      />
 		  	) : (	
 				<Table
-		  			containerState={containerState}
+		  			itemState={itemState}
 		  			header={header}
 					parent={parent}
-		  			items={itemState.items}
-		  			itemCount={itemState.itemCount}
-		  			listStart={itemState.listStart}
-		  			listLimit={itemState.listLimit}
 		  			columns={columns}
 					labelGroup={group}
 		  			appPrefs={appPrefs}
@@ -78,11 +68,9 @@ export default function PMPermissionView({containerState, itemState, appPrefs, o
 		  			onOrderBy={onOrderBy}
 		  			onOption={onOption}
 		  			goBack={goBack}
-					orderCriteria={itemState.orderCriteria}
-  					searchCriteria={itemState.searchCriteria}
 				/>
 			)}
-	  		<Modal isOpen={containerState.isDeleteModalOpen} onClose={() => closeModal()} >
+	  		<Modal isOpen={itemState.isDeleteModalOpen} onClose={() => closeModal()} >
 	  			<div className="modal-dialog">
 	  				<div className="modal-content">
 	  					<div className="modal-header">
@@ -93,7 +81,7 @@ export default function PMPermissionView({containerState, itemState, appPrefs, o
 	  						<h3>Are you sure you want to delete?</h3>
 	  					</div>
 	  					<div className="modal-footer">
-	  						<button type="button" className="btn btn-primary" onClick={() => onOption("DELETEFINAL",containerState.selected)}>Delete</button>
+	  						<button type="button" className="btn btn-primary" onClick={() => onOption("DELETEFINAL",itemState.selected)}>Delete</button>
 	  						<button type="button" className="btn btn-secondary" data-dismiss="modal" onClick={() => closeModal()}>Close</button>
 	  					</div>
 	  				</div>
@@ -105,8 +93,7 @@ export default function PMPermissionView({containerState, itemState, appPrefs, o
 
 
 PMPermissionView.propTypes = {
-	containerState: PropTypes.object,
-	itemState: PropTypes.object,
+	itemState: PropTypes.object.isRequired,
 	appPrefs: PropTypes.object,
 	onListLimitChange: PropTypes.func,
 	onSearchChange: PropTypes.func,
